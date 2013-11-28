@@ -51,6 +51,7 @@ while(my $row = $csv->getline($fh)) {
 	else {
 		$new_entry->[2] = 0;
 		$new_entry->[3] = 0;
+        $new_entry->[4] = 0;
 	}
 	
     push(@rows, $new_entry);
@@ -60,8 +61,8 @@ while(my $row = $csv->getline($fh)) {
 }
 close($fh);
 
-my $format = "%-11s %5s %10s %9s %0.1f\n";
-printf($format, "Date", "Km", "deltaDate", "deltaKM", "km/day");
+printf("%-11s %5s %10s %9s %6s\n", "Date", "Km", "deltaDate", "deltaKM", 'km/day');
+my $format = "%-11s %5s %10s %9s %6.1f\n";
 printf($format, $_->[0], $_->[1], $_->[2], $_->[3], $_->[4]) for @rows;
 
 
